@@ -1,0 +1,17 @@
+collective.gallerypage Installation
+----------------------------
+
+To install collective.gallerypage using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``collective.gallerypage`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        collective.gallerypage
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout
