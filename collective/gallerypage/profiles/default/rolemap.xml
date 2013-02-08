@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <!-- -*- extra stuff goes here -*- -->
+    <permission name="collective.gallerypage: Add Gallery Page" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" /> 
+      <role name="Contributor" />      
+    </permission>
+  </permissions>
+</rolemap>

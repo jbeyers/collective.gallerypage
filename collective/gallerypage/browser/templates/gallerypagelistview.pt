@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="proafrica.content">
+<body>
+
+    <div metal:fill-slot="content-core">
+        <div tal:content="structure context/getText|nothing" />
+            <tal:listing define="batch view/contents">
+
+                <metal:listing metal:define-macro="listing">
+                <tal:block tal:repeat="item batch">
+                    <tal:ob tal:define="ob item/getObject;listing_link ob/@@view/listing_image_link">
+
+
+                    <div class="tileItem visualIEFloatFix">
+                        <a href="#" tal:attributes="href ob/absolute_url"><img class="tileImage" tal:attributes="src listing_link"></a>
+                        <h2 class="tileHeadline"><a class="summary url contenttype-document" href="#" tal:attributes="href ob/absolute_url" tal:content="ob/Title">Property Name</a></h2>
+                        <p class="tileBody">
+                            <span class="description" tal:content="ob/description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                        </p>
+                        <p class="tileFooter">
+                            <a href="#" tal:attributes="href ob/absolute_url"> Find out more... </a>
+                        </p>
+                        <div class="visualClear"></div>
+                    </div>
+
+                    </tal:ob>
+                </tal:block>
+                </metal:listing>
+
+                <!-- Navigation -->
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
+            </tal:listing>
+    </div>
+</body>
+</html>

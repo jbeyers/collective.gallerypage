@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="proafrica.content"
+     interface="proafrica.content.interfaces.IAddOnInstalled"
+     />
+</layers>

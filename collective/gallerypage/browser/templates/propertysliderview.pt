@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="proafrica.content">
+<body>
+
+    <div metal:fill-slot="content-core">
+        <div id="ticker-core" tal:content="structure context/getText|nothing" />
+            <tal:listing tal:define="batch view/featured_properties">
+                <h2 class="header">Featured Properties</h2>
+                <ul id="propticker">
+                <tal:block tal:repeat="item batch">
+                <tal:ob tal:define="ob item/getObject">
+                <li tal:condition="ob/featured_image">
+                    <div class="propticker-image" tal:attributes="rel string:${repeat/item/index}">
+                        <a href="#" tal:attributes="href ob/absolute_url"><img tal:replace="structure ob/@@images/featured_image/ticker_small"></a>
+                    </div>
+                </li>
+                </tal:ob>
+                </tal:block>
+                </ul>
+                <div id="propticker-overlays">
+                <tal:block tal:repeat="item batch">
+                    <tal:ob tal:define="ob item/getObject">
+                    <div class="propticker-property" tal:condition="ob/featured_image" tal:attributes="id string:ticker-${repeat/item/index}">
+                        <div class="propticker-description">
+                            <a href="#" tal:attributes="href ob/absolute_url"><img tal:replace="structure ob/@@images/featured_image/ticker_large"></a>
+                            <h2 class="tileHeadline"><a class="summary url contenttype-document" href="#" tal:attributes="href ob/absolute_url" tal:content="ob/Title">Property Name</a></h2>
+                            <p class="tileBody">
+                                <span class="description" tal:define="description ob/description" tal:content="python: '%s...' % description[:70]"></span>
+                            </p>
+                            <p class="tileFooter">
+                                <a href="#" tal:attributes="href ob/absolute_url"> Find out more... </a>
+                            </p>
+                        </div>
+                        <div class="visualClear"></div>
+                    </div>
+
+                    </tal:ob>
+                </tal:block>
+                </div>
+
+            </tal:listing>
+        <div id="africa-names" class="overlay">
+            <div tal:repeat="area view/africa_names" tal:attributes="id area/map_code/lower">
+                <a tal:attributes="href area/absolute_url" tal:content="area/title">country</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
