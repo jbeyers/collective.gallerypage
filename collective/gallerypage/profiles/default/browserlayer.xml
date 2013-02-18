@@ -1,6 +1,6 @@
 <layers>
  <layer
-     name="proafrica.content"
-     interface="proafrica.content.interfaces.IAddOnInstalled"
+     name="collective.gallerypage"
+     interface="collective.gallerypage.interfaces.IAddOnInstalled"
      />
 </layers>

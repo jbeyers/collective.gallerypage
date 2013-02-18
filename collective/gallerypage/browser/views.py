@@ -19,7 +19,7 @@ class IGalleryPageListView(Interface):
     contents = schema.Object(Interface)
 
 class GalleryPageListView(grok.View):
-    """ Show properties in a list.
+    """ Show gallery pages in a list.
     """
     grok.context(Interface)
     grok.layer(IAddOnInstalled)
