@@ -34,7 +34,7 @@ class View(grok.View):
         images = self.get_image_brains()
         if not images:
             return None
-        return images[0].getObject()
+        return images[0]
 
     def get_files(self):
         return self.context.listFolderContents(contentFilter={

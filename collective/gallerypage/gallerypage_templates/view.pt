@@ -10,6 +10,10 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
+  <div tal:define="first_image view/get_first_image" tal:condition="first_image">
+      <img tal:replace="structure first_image/@@images/image/gallerypage_preview" />
+  </div>
+
     <div class="main-text" tal:content="structure context/text/output|nothing" />
 
   </metal:content-core>
