@@ -10,12 +10,25 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
-  <div tal:define="first_image view/get_first_image" tal:condition="first_image">
+  <div class="gallery" 
+      tal:define="first_image view/get_first_image"
+      tal:condition="first_image">
       <img tal:replace="structure first_image/@@images/image/gallerypage_preview" />
   </div>
 
     <div class="main-text" tal:content="structure context/text/output|nothing" />
 
+    <ul class="file-listing">
+        <li tal:repeat="ob view/get_files">
+            <h2 tal:content="ob/title" />
+            <div class="description" tal:content="ob/description" />
+            <div>
+                <a tal:attributes="href string:${ob/absolute_url}/view" target="_blank">View</a>
+                |
+                <a tal:attributes="href string:${ob/absolute_url}/at_download/file">Download</a>
+            </div>
+        </li>
+    </ul>
   </metal:content-core>
 </metal:main>
 
