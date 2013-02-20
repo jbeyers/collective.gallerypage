@@ -14,7 +14,7 @@
 
 
                     <div class="tileItem visualIEFloatFix">
-                        <a href="#" tal:attributes="href ob/absolute_url"><img tal:replace="structure listing_image/@@images/image/gallerypage_thumb"></a>
+                        <a href="#" tal:attributes="href ob/absolute_url" tal:condition="listing_image"><img tal:replace="structure listing_image/@@images/image/gallerypage_thumb"></a>
                         <h2 class="tileHeadline"><a class="summary url contenttype-document" href="#" tal:attributes="href ob/absolute_url" tal:content="ob/Title">Title</a></h2>
                         <p class="tileBody">
                             <span class="description" tal:content="ob/description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
