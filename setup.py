@@ -27,6 +27,7 @@ setup(name='collective.gallerypage',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'z3c.jbot>=0.6.0',
       ],
       entry_points="""
       # -*- Entry points: -*-

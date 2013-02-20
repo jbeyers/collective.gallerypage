@@ -13,6 +13,7 @@
 
   <include file="permissions.zcml" />
   <include package=".browser" />
+  <include package="z3c.jbot" file="meta.zcml" />
   
   <!-- Grok the package to initialise schema interfaces and content classes -->
   <grok:grok package="." />
@@ -45,5 +46,9 @@
         action="@@gallerypagelistview"
         description="List Gallery Pages in the Collection"
         />
+
+    <browser:templateOverrides
+        layer=".interfaces.IAddOnInstalled"
+        directory="browser/templates" />
 
 </configure>
