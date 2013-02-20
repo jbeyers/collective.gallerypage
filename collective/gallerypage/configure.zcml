@@ -47,8 +47,8 @@
         description="List Gallery Pages in the Collection"
         />
 
-    <browser:templateOverrides
+    <browser:jbot
         layer=".interfaces.IAddOnInstalled"
-        directory="browser/templates" />
+        directory="browser/jbot" />
 
 </configure>
