@@ -11,10 +11,10 @@
   <metal:content-core define-macro="content-core">
 
   <div class="gallery" 
-      tal:define="first_image view/get_first_image"
-      tal:condition="first_image">
-      <tal:images tal:repeat="image view/get_images">
-      <a rel="lightbox-gallerypage" tal:attributes="href string:${image/absolute_url}/image_large"><img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" /></a>
+      tal:define="images view/get_images"
+      tal:condition="images">
+      <tal:images tal:repeat="image images">
+      <a rel="lightbox-gallerypage" tal:attributes="href string:${image/absolute_url}/image_large"><img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" /><tal:gallery tal:condition="repeat/image/end"><span tal:condition="python:len(images)>1">View Gallery</span></tal:gallery></a>
       </tal:images>
   </div>
 
@@ -25,7 +25,7 @@
             <h2 tal:content="ob/title" />
             <div class="description" tal:content="ob/description" />
             <div>
-                <a tal:attributes="href string:${ob/absolute_url}/view" target="_blank">View</a>
+                <a tal:attributes="href string:${ob/absolute_url}" target="_blank">View</a>
                 |
                 <a tal:attributes="href string:${ob/absolute_url}/at_download/file">Download</a>
             </div>
