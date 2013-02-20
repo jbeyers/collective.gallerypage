@@ -25,13 +25,13 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
-    def get_image_brains(self):
+    def get_images(self):
         return self.context.listFolderContents(contentFilter={
             'portal_type': 'Image',
             'sort_on': 'getObjPositionInParent'})
 
     def get_first_image(self):
-        images = self.get_image_brains()
+        images = self.get_images()
         if not images:
             return None
         return images[0]

@@ -13,7 +13,9 @@
   <div class="gallery" 
       tal:define="first_image view/get_first_image"
       tal:condition="first_image">
-      <img tal:replace="structure first_image/@@images/image/gallerypage_preview" />
+      <tal:images tal:repeat="image view/get_images">
+      <a rel="lightbox-gallerypage" tal:attributes="href string:${image/absolute_url}/image_large"><img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" /></a>
+      </tal:images>
   </div>
 
     <div class="main-text" tal:content="structure context/text/output|nothing" />
