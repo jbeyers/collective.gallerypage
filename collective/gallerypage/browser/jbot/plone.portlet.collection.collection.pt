@@ -26,9 +26,9 @@
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a href="#"
            class="tile"
+           tal:condition="not:is_gp"
            tal:attributes="href itemUrl;
                            title obj/Description">
-            <tal:normal tal:condition="not:is_gp">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
              Title
@@ -38,18 +38,22 @@
                   tal:content="python:toLocalizedTime(obj.Date)">
                 Date
             </span>
-            </tal:normal>
-            <tal:gallerypage tal:condition="is_gp">
+        </a>
+        <tal:gallerypage tal:condition="is_gp">
             <img tal:define="ob obj/getObject;
                              obview nocall:ob/@@view;
                              img obview/get_first_image"
                 tal:condition="nocall:img"
                 tal:replace="structure img/@@images/image/gallerypage_mini" />
-            <span tal:replace="obj/pretty_title_or_id">
-             Title
-            </span>
-            </tal:gallerypage>
-        </a>
+            <a href="#"
+               class="tile"
+               tal:attributes="href itemUrl;
+                               title obj/Description">
+                <span tal:content="obj/pretty_title_or_id">
+                 Title
+                </span>
+            </a>
+        </tal:gallerypage>
     </dd>
     </tal:events>
 
