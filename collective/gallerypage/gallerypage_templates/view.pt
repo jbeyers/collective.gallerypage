@@ -24,7 +24,7 @@
         <li tal:repeat="ob view/get_files">
             <h2 tal:content="ob/title" />
             <div class="description" tal:content="ob/description" />
-            <div>
+            <div class="file-links">
                 <a tal:attributes="href string:${ob/absolute_url}" target="_blank">View</a>
                 |
                 <a tal:attributes="href string:${ob/absolute_url}/at_download/file">Download</a>
