@@ -66,7 +66,7 @@ class GalleryPageListView(grok.View):
         """
 
         # How many items is one one page
-        limit = 10
+        limit = 20
 
         # Limit to gallerypage content type
         filter = { "portal_type" : "collective.gallerypage.gallerypage" }
