@@ -67,13 +67,14 @@ class GalleryPageListView(grok.View):
 
         # How many items is one one page
         limit = 21
-
-        # Limit to gallerypage content type
-        filter = { "portal_type" : "collective.gallerypage.gallerypage" }
-
         start = self.request.get("b_start", 0)
 
-        # Perform portal_catalog query
-        self.contents = self.query(start, limit, filter)
+        # Limit to gallerypage content type
+        contentFilter = { "portal_type" : "collective.gallerypage.gallerypage",
+                          "b_start" : start,
+                          "b_size" : limit }
 
+
+        # Perform portal_catalog query
+        self.contents = self.query(start, limit, contentFilter) 
         return self.index.render(self) 
