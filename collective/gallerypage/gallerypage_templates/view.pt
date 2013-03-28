@@ -14,7 +14,14 @@
       tal:define="images view/get_images"
       tal:condition="images">
       <tal:images tal:repeat="image images">
-      <a rel="lightbox-gallerypage" tal:attributes="href string:${image/absolute_url}/image_large"><img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" /><tal:gallery tal:condition="repeat/image/start"><span tal:condition="python:len(images)>1">View Gallery</span></tal:gallery></a>
+      <a rel="lightbox-gallerypage"
+          tal:attributes="href string:${image/absolute_url}/image_large;
+                          title image/Title|nothing">
+          <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
+          <tal:gallery tal:condition="repeat/image/start">
+          <span tal:condition="python:len(images)>1">View Gallery</span>
+          </tal:gallery>
+      </a>
       </tal:images>
   </div>
 
