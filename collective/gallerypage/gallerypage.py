@@ -1,6 +1,7 @@
 from zope import schema
 from five import grok
 
+from Products.CMFCore.utils import getToolByName
 from plone.directives import dexterity, form
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.app.textfield import RichText
@@ -18,7 +19,18 @@ class IGalleryPage(form.Schema, IImageScaleTraversable):
 
 class GalleryPage(dexterity.Container):
     grok.implements(IGalleryPage)
-    
+
+    def SearchableText(self):
+        value = ''
+        if self.text:
+            transforms = getToolByName(self, 'portal_transforms')
+            stream = transforms.convertTo('text/plain', self.text, mimetype='text/html')
+            value = stream.getData().strip()
+
+        print value
+        return ' '.join([self.Title(), self.Description(), value,
+                         ' '.join([i.encode('utf-8') for i in self.subject])])
+
 
 class View(grok.View):
     grok.context(IGalleryPage)
