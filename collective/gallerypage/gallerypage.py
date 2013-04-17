@@ -24,12 +24,14 @@ class GalleryPage(dexterity.Container):
         value = ''
         if self.text:
             transforms = getToolByName(self, 'portal_transforms')
-            stream = transforms.convertTo('text/plain', self.text, mimetype='text/html')
+            stream = transforms.convertTo('text/plain', self.text.output, mimetype='text/html')
             value = stream.getData().strip()
 
-        print value
-        return ' '.join([self.Title(), self.Description(), value,
-                         ' '.join([i.encode('utf-8') for i in self.subject])])
+        subjects = u' '.join([i for i in self.subject])
+        title = unicode(self.Title(), 'utf-8')
+        description = unicode(self.Description(), 'utf-8')
+        terms = u' '.join([title, description, value, subjects])
+        return terms
 
 
 class View(grok.View):
