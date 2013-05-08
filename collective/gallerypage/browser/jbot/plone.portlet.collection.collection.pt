@@ -1,16 +1,16 @@
 <dl class="portlet portletCollection"
     i18n:domain="plone"
     tal:define="collection_url view/collection_url;
-                plone_view context/@@plone;
-                toLocalizedTime nocall:plone_view/toLocalizedTime;
-                viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
-                getIcon nocall:plone_view/getIcon;"
+    plone_view context/@@plone;
+    toLocalizedTime nocall:plone_view/toLocalizedTime;
+    viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
+    getIcon nocall:plone_view/getIcon;"
     tal:attributes="class string:portlet portletCollection ${view/css_class}">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-            <span tal:content="view/data/header" />
+            <span tal:content="view/data/header"></span>
         </a>
         <span class="portletTopRight"></span>
     </dt>
@@ -18,41 +18,41 @@
     <tal:events tal:repeat="obj view/results">
     <dd class="portletItem"
         tal:define="oddrow repeat/obj/odd;
-                    useView    python:obj.portal_type in viewActions;
-                    itemUrl    python:useView and obj.getURL() + '/view' or obj.getURL();
-                    is_gp python:obj.portal_type == 'collective.gallerypage.gallerypage';
-                    item_icon python:getIcon(obj);"
+        useView    python:obj.portal_type in viewActions;
+        itemUrl    python:useView and obj.getURL() + '/view' or obj.getURL();
+        is_gp python:obj.portal_type == 'collective.gallerypage.gallerypage';
+        item_icon python:getIcon(obj);"
 
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a href="#"
-           class="tile"
-           tal:condition="not:is_gp"
-           tal:attributes="href itemUrl;
-                           title obj/Description">
+            class="tile"
+            tal:condition="not:is_gp"
+            tal:attributes="href itemUrl;
+            title obj/Description">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
-             Title
+                Title
             </span>
             <span class="portletItemDetails"
-                  tal:condition="view/data/show_dates"
-                  tal:content="python:toLocalizedTime(obj.Date)">
+                tal:condition="view/data/show_dates"
+                tal:content="python:toLocalizedTime(obj.Date)">
                 Date
             </span>
         </a>
         <tal:gallerypage tal:condition="is_gp">
-            <img tal:define="ob obj/getObject;
-                             obview nocall:ob/@@view;
-                             img obview/get_first_image"
-                tal:condition="nocall:img"
-                tal:replace="structure img/@@images/image/gallerypage_mini" />
-            <a href="#"
-               class="tile"
-               tal:attributes="href itemUrl;
-                               title obj/Description">
-                <span tal:content="obj/pretty_title_or_id">
-                 Title
-                </span>
-            </a>
+        <img tal:define="ob obj/getObject;
+        obview nocall:ob/@@view;
+        img obview/get_first_image"
+        tal:condition="nocall:img"
+        tal:replace="structure img/@@images/image/gallerypage_mini" />
+        <a href="#"
+            class="tile"
+            tal:attributes="href itemUrl;
+            title obj/Description">
+            <span tal:content="obj/pretty_title_or_id">
+                Title
+            </span>
+        </a>
         </tal:gallerypage>
     </dd>
     </tal:events>
@@ -60,9 +60,9 @@
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
         <span tal:condition="view/data/show_more">
-        <a tal:attributes="href collection_url" i18n:translate="more_url">
-            More&hellip;
-        </a>
+            <a tal:attributes="href collection_url" i18n:translate="more_url">
+                More&hellip;
+            </a>
         </span>
         <span class="portletBottomRight"></span>
     </dd>

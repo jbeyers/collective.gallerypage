@@ -1,15 +1,12 @@
 from zope import schema
 from zope.interface import implements, Interface
-from zope.app.component.hooks import getSite
 from five import grok
-from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IATTopic
-
 
 from collective.gallerypage.interfaces import IAddOnInstalled
 
 grok.templatedir('templates')
+
 
 class IGalleryPageListView(Interface):
     """ Allowed template variables exposed from the view.
@@ -17,6 +14,7 @@ class IGalleryPageListView(Interface):
 
     # Item list as iterable Products.CMFPlone.PloneBatch.Batch object
     contents = schema.Object(Interface)
+
 
 class GalleryPageListView(grok.View):
     """ Show gallery pages in a list.
@@ -34,16 +32,14 @@ class GalleryPageListView(grok.View):
 
         @param limit: maximum number of items in the batch
 
-        @param contentFilter: portal_catalog filtering dictionary with index -> value pairs.
+        @param contentFilter: portal_catalog filtering dictionary with index ->
+        value pairs.
 
         @return: Products.CMFPlone.PloneBatch.Batch object
         """
 
         # Batch size
         b_size = limit
-
-        # Batch start index, zero based
-        b_start = start
 
         # We use different query method, depending on
         # whether we do listing for topic or folder
@@ -59,7 +55,9 @@ class GalleryPageListView(grok.View):
             # Call CMFPlone(/skins/plone_scripts/getFolderContents Python
             # script This method handles b_start parameter internally and grabs
             # it from the request object
-            return self.context.getFolderContents(contentFilter, batch=True, b_size=b_size)
+            return self.context.getFolderContents(contentFilter,
+                                                  batch=True,
+                                                  b_size=b_size)
 
     def __call__(self):
         """ Render the content item listing.
@@ -70,11 +68,10 @@ class GalleryPageListView(grok.View):
         start = self.request.get("b_start", 0)
 
         # Limit to gallerypage content type
-        contentFilter = { "portal_type" : "collective.gallerypage.gallerypage",
-                          "b_start" : start,
-                          "b_size" : limit }
-
+        contentFilter = { "portal_type": "collective.gallerypage.gallerypage",
+                          "b_start": start,
+                          "b_size": limit }
 
         # Perform portal_catalog query
-        self.contents = self.query(start, limit, contentFilter) 
-        return self.index.render(self) 
+        self.contents = self.query(start, limit, contentFilter)
+        return self.index.render(self)

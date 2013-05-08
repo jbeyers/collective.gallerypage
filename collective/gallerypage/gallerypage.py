@@ -1,4 +1,3 @@
-from zope import schema
 from five import grok
 
 from Products.CMFCore.utils import getToolByName
@@ -13,8 +12,8 @@ class IGalleryPage(form.Schema, IImageScaleTraversable):
     """
     A Gallery Page
     """
-    text = RichText(title = _(u'Text'),
-        required = False)
+    text = RichText(title=_(u'Text'),
+                    required=False)
 
 
 class GalleryPage(dexterity.Container):
