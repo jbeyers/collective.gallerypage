@@ -24,7 +24,11 @@ class GalleryPage(dexterity.Container):
         value = ''
         if self.text:
             transforms = getToolByName(self, 'portal_transforms')
-            stream = transforms.convertTo('text/plain', self.text.output, mimetype='text/html')
+            try:
+                stream = transforms.convertTo('text/plain', self.text.output, mimetype='text/html')
+            except TypeError:
+                return u''
+
             value = stream.getData().strip()
 
         subjects = u' '.join([i for i in self.subject])
