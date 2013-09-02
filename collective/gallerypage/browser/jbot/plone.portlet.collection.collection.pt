@@ -44,7 +44,7 @@
         obview nocall:ob/@@view;
         img obview/get_first_image"
         tal:condition="nocall:img"
-        tal:replace="structure img/@@images/image/gallerypage_mini" />
+        tal:replace="structure img/@@images/image/gallerypage_mini|nothing" />
         <a href="#"
             class="tile"
             tal:attributes="href itemUrl;
