@@ -12,9 +12,6 @@
             <metal:listing metal:define-macro="listing">
             <tal:block tal:repeat="item batch">
             <tal:ob tal:define="ob item/getObject;view nocall:ob/@@view">
-            <h2 tal:content="ob/title"></h2>
-            <div class="description" tal:content="ob/description"></div>
-            <div class="main-text" tal:content="structure context/text/output|nothing"></div>
             <tal:images tal:define="images view/get_images"
             tal:condition="images"
             tal:repeat="image images">
@@ -25,6 +22,9 @@
                 </a>
             </div>
             </tal:images>
+            <h2 tal:content="ob/title"></h2>
+            <div class="description" tal:content="ob/description"></div>
+            <div class="main-text" tal:content="structure ob/text/output|nothing"></div>
             <tal:files tal:repeat="fil view/get_files">
             <div class="file-links">
                 <h2 tal:content="fil/title"></h2>
