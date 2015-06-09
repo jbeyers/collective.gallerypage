@@ -15,23 +15,25 @@
             <tal:images tal:define="images view/get_images"
             tal:condition="images"
             tal:repeat="image images">
-            <div class="image">
-                <a tal:attributes="href string:${image/absolute_url}/image_large;
-                    title image/Title|nothing">
-                    <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
-                </a>
-            </div>
-            </tal:images>
-            <h2 tal:content="ob/title"></h2>
-            <div class="description" tal:content="ob/description"></div>
-            <div class="main-text" tal:content="structure ob/text/output|nothing"></div>
-            <tal:files tal:repeat="fil view/get_files">
-            <div class="file-links">
-                <h2 tal:content="fil/title"></h2>
-                <div class="description" tal:content="fil/description"></div>
-                <a tal:attributes="href string:${fil/absolute_url}" target="_blank">View</a>
-                |
-                <a tal:attributes="href string:${fil/absolute_url}/at_download/file">Download</a>
+            <div class="tileItem">
+                <div class="image">
+                    <a tal:attributes="href string:${image/absolute_url}/image_large;
+                        title image/Title|nothing">
+                        <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
+                    </a>
+                </div>
+                </tal:images>
+                <h2 tal:content="ob/title"></h2>
+                <div class="description" tal:content="ob/description"></div>
+                <div class="main-text" tal:content="structure ob/text/output|nothing"></div>
+                <tal:files tal:repeat="fil view/get_files">
+                <div class="file-links">
+                    <h2 tal:content="fil/title"></h2>
+                    <div class="description" tal:content="fil/description"></div>
+                    <a tal:attributes="href string:${fil/absolute_url}" target="_blank">View</a>
+                    |
+                    <a tal:attributes="href string:${fil/absolute_url}/at_download/file">Download</a>
+                </div>
             </div>
             </tal:files>
             </tal:ob>
