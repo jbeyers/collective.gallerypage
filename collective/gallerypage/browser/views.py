@@ -1,11 +1,9 @@
 from zope import schema
 from zope.interface import implements, Interface
-from five import grok
 from Products.ATContentTypes.interface import IATTopic
+from Products.Five import BrowserView
 
 from collective.gallerypage.interfaces import IAddOnInstalled
-
-grok.templatedir('templates')
 
 
 class IGalleryPageListView(Interface):
@@ -16,14 +14,10 @@ class IGalleryPageListView(Interface):
     contents = schema.Object(Interface)
 
 
-class GalleryPageListView(grok.View):
+class GalleryPageListView(BrowserView):
     """ Show gallery pages in a list.
     """
-    grok.context(Interface)
-    grok.layer(IAddOnInstalled)
     implements(IGalleryPageListView)
-
-    index = grok.PageTemplateFile("templates/gallerypagelistview.pt")
 
     def query(self, start, limit, contentFilter):
         """ Make catalog query for the folder listing.
@@ -63,7 +57,7 @@ class GalleryPageListView(grok.View):
         """ Render the content item listing.
         """
 
-        # How many items is one one page
+        # How many items is on one page
         limit = 21
         start = self.request.get("b_start", 0)
 
@@ -74,4 +68,4 @@ class GalleryPageListView(grok.View):
 
         # Perform portal_catalog query
         self.contents = self.query(start, limit, contentFilter)
-        return self.index.render(self)
+        return self.index()

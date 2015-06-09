@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="collective.gallerypage">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div metal:fill-slot="content-core">
+            <div tal:content="structure context/getText|nothing"></div>
+            <tal:listing define="batch view/contents">
+            <metal:listing metal:define-macro="listing">
+            <tal:block tal:repeat="item batch">
+            <tal:ob tal:define="ob item/getObject;view nocall:ob/@@view">
+            <h2 tal:content="ob/title"></h2>
+            <div class="description" tal:content="ob/description"></div>
+            <div class="main-text" tal:content="structure context/text/output|nothing"></div>
+            <tal:images tal:define="images view/get_images"
+            tal:condition="images"
+            tal:repeat="image images">
+            <div class="image">
+                <a tal:attributes="href string:${image/absolute_url}/image_large;
+                    title image/Title|nothing">
+                    <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
+                </a>
+            </div>
+            </tal:images>
+            <tal:files tal:repeat="fil view/get_files">
+            <div class="file-links">
+                <h2 tal:content="fil/title"></h2>
+                <div class="description" tal:content="fil/description"></div>
+                <a tal:attributes="href string:${fil/absolute_url}" target="_blank">View</a>
+                |
+                <a tal:attributes="href string:${fil/absolute_url}/at_download/file">Download</a>
+            </div>
+            </tal:files>
+            </tal:ob>
+            </tal:block>
+            </metal:listing>
+
+            <!-- Navigation -->
+            <div metal:use-macro="here/batch_macros/macros/navigation"></div>
+            </tal:listing>
+        </div>
+    </body>
+</html>

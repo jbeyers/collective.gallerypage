@@ -8,35 +8,75 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.gallerypage">
 
-  <!-- Include configuration for dependencies listed in setup.py -->
-  <includeDependencies package="." />
+    <!-- Include configuration for dependencies listed in setup.py -->
+    <includeDependencies package="." />
 
-  <include file="permissions.zcml" />
-  <include package=".browser" />
-  <include package="z3c.jbot" file="meta.zcml" />
-  
-  <!-- Grok the package to initialise schema interfaces and content classes -->
-  <grok:grok package="." />
-  
-  <i18n:registerTranslations directory="locales" />
+    <include file="permissions.zcml" />
+    <include package=".browser" />
+    <include package="z3c.jbot" file="meta.zcml" />
 
-  <!-- Register an extension profile to make the product installable
-       in Plone -->
-  <genericsetup:registerProfile
-      name="default"
-      title="Gallery Page Product"
-      directory="profiles/default"
-      description="Extension profile for Gallery Page Product"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+    <!-- Grok the package to initialise schema interfaces and content classes -->
+    <grok:grok package="." />
 
-  <!-- -*- extra stuff goes here -*- -->
+    <i18n:registerTranslations directory="locales" />
+
+    <!-- Register an extension profile to make the product installable in Plone -->
+    <genericsetup:registerProfile
+        name="default"
+        title="Gallery Page Product"
+        directory="profiles/default"
+        description="Extension profile for Gallery Page Product"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <browser:page
+        name="gallerypagelistview"
+        for="Products.ATContentTypes.interface.IATFolder"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagelistview.pt"
+        />
+
+    <browser:page
+        name="gallerypagefulllistview"
+        for="Products.ATContentTypes.interface.IATFolder"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagefulllistview.pt"
+        />
+
     <browser:menuItem
         for="Products.ATContentTypes.interface.IATFolder"
         menu="plone_displayviews"
         title="Gallerypage List"
         action="@@gallerypagelistview"
-        description="List Gallery Pages in the folder"
+        description="List Gallery Pages"
+        />
+
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATFolder"
+        menu="plone_displayviews"
+        title="Gallerypage Full List"
+        action="@@gallerypagefulllistview"
+        description="List Gallery Pages with full content"
+        />
+
+    <browser:page
+        name="gallerypagelistview"
+        for="Products.ATContentTypes.interface.IATTopic"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagelistview.pt"
+        />
+
+    <browser:page
+        name="gallerypagefulllistview"
+        for="Products.ATContentTypes.interface.IATTopic"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagefulllistview.pt"
         />
 
     <browser:menuItem
@@ -44,7 +84,15 @@
         menu="plone_displayviews"
         title="Gallerypage List"
         action="@@gallerypagelistview"
-        description="List Gallery Pages in the Collection"
+        description="List Gallery Pages"
+        />
+
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATTopic"
+        menu="plone_displayviews"
+        title="Gallerypage Full List"
+        action="@@gallerypagefulllistview"
+        description="List Gallery Pages with full content"
         />
 
     <browser:jbot

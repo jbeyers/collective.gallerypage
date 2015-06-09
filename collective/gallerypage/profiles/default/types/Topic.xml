@@ -5,5 +5,6 @@
     <property name="view_methods" purge="False">
         <!-- We retrofit these new views for Topics in portal_types info -->
         <element value="gallerypagelistview"/>
+        <element value="gallerypagefulllistview"/>
     </property>
 </object>
