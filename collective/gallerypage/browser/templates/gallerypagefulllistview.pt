@@ -30,7 +30,7 @@
                 <div class="file-links">
                     <h2 tal:content="fil/title"></h2>
                     <div class="description" tal:content="fil/description"></div>
-                    <a tal:attributes="href string:${fil/absolute_url}" target="_blank">View</a>
+                    <a tal:attributes="href string:${fil/absolute_url}/view">View</a>
                     |
                     <a tal:attributes="href string:${fil/absolute_url}/at_download/file">Download</a>
                 </div>
