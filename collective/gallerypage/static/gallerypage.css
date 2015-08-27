@@ -1,0 +1,16 @@
+.portaltype-collective-gallerypage-gallerypage .gallery {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.portaltype-collective-gallerypage-gallerypage .gallery span {
+    display: block;
+    padding: 6px 10px;
+    background: #EEE;
+    text-align: center;
+    margin-top: 1px;
+}
+
+.portaltype-collective-gallerypage-gallerypage .gallery span:hover {
+    background: #dedede;
+}
