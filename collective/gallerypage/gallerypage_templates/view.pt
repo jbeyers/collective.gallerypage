@@ -15,6 +15,7 @@
             <tal:images tal:repeat="image images">
             <a rel="lightbox-gallerypage"
                 tal:attributes="href string:${image/absolute_url}/image_large;
+                rel string:lightbox-${context/UID};
                 title image/Title|nothing">
                 <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
                 <tal:gallery tal:condition="repeat/image/start">
