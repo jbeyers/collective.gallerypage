@@ -17,7 +17,9 @@
                 tal:condition="images"
                 tal:repeat="image images">
                 <div class="image">
-                    <a tal:attributes="href string:${image/absolute_url}/image_large;
+                    <a tal:define="scales image/@@images;
+                                   img python: scales.scale('image', scale='large')"
+                        tal:attributes="href img/url;
                         title image/Title|nothing">
                         <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
                     </a>

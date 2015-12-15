@@ -14,7 +14,8 @@
             tal:condition="images">
             <tal:images tal:repeat="image images">
             <a rel="lightbox-gallerypage"
-                tal:attributes="href string:${image/absolute_url}/image_large;
+                tal:define="scales image/@@images;img python: scales.scale('image', scale='large')"
+                tal:attributes="href img/url;
                 rel string:lightbox-${context/id};
                 title image/Title|nothing">
                 <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
