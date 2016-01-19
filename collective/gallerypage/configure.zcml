@@ -95,6 +95,14 @@
         description="List Gallery Pages with full content"
         />
 
+    <browser:page
+        name="gallerypageview"
+        for="collective.gallerypage.gallerypage.IGalleryPage"
+        permission="zope2.Public"
+        class="collective.gallerypage.gallerypage.View"
+        template="gallerypage_templates/view.pt"
+        />
+
     <browser:jbot
         layer=".interfaces.IAddOnInstalled"
         directory="browser/jbot" />
