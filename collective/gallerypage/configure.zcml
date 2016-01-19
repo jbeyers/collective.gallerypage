@@ -96,7 +96,7 @@
         />
 
     <browser:page
-        name="gallerypageview"
+        name="view"
         for="collective.gallerypage.gallerypage.IGalleryPage"
         permission="zope2.Public"
         class="collective.gallerypage.gallerypage.View"
