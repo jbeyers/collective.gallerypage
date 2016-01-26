@@ -40,6 +40,14 @@
         />
 
     <browser:page
+        name="gallerypagefulllistview"
+        for="Products.ATContentTypes.interface.IATFolder"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagefulllistview.pt"
+        />
+
+    <browser:page
         name="gallerypagelistview"
         for="plone.dexterity.interfaces.IDexterityContainer"
         permission="zope2.Public"
@@ -49,7 +57,7 @@
 
     <browser:page
         name="gallerypagefulllistview"
-        for="Products.ATContentTypes.interface.IATFolder"
+        for="plone.dexterity.interfaces.IDexterityContainer"
         permission="zope2.Public"
         class=".browser.views.GalleryPageListView"
         template="browser/templates/gallerypagefulllistview.pt"
@@ -69,6 +77,22 @@
         title="Gallerypage Full List"
         action="@@gallerypagefulllistview"
         description="List Gallery Pages with full content"
+        />
+
+    <browser:page
+        name="gallerypagelistview"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagelistview.pt"
+        />
+
+    <browser:page
+        name="gallerypagefulllistview"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagefulllistview.pt"
         />
 
     <browser:page
