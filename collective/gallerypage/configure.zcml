@@ -40,6 +40,14 @@
         />
 
     <browser:page
+        name="gallerypagelistview"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        permission="zope2.Public"
+        class=".browser.views.GalleryPageListView"
+        template="browser/templates/gallerypagelistview.pt"
+        />
+
+    <browser:page
         name="gallerypagefulllistview"
         for="Products.ATContentTypes.interface.IATFolder"
         permission="zope2.Public"
