@@ -30,7 +30,7 @@
             tal:attributes="href itemUrl;
             title obj/Description">
             <img tal:replace="structure item_icon/html_tag" />
-            <span tal:replace="obj/pretty_title_or_id">
+            <span tal:replace="obj/pretty_title_or_id|obj/title">
                 Title
             </span>
             <span class="portletItemDetails"
@@ -49,7 +49,7 @@
             class="tile"
             tal:attributes="href itemUrl;
             title obj/Description">
-            <span tal:content="obj/pretty_title_or_id">
+            <span tal:content="obj/pretty_title_or_id|obj/title">
                 Title
             </span>
         </a>
