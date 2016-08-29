@@ -81,7 +81,7 @@
 
     <browser:page
         name="gallerypagelistview"
-        for="plone.app.collection.interfaces.ICollection"
+        for="plone.app.contenttypes.interfaces.ICollection"
         permission="zope2.Public"
         class=".browser.views.GalleryPageListView"
         template="browser/templates/gallerypagelistview.pt"
@@ -89,7 +89,7 @@
 
     <browser:page
         name="gallerypagefulllistview"
-        for="plone.app.collection.interfaces.ICollection"
+        for="plone.app.contenttypes.interfaces.ICollection"
         permission="zope2.Public"
         class=".browser.views.GalleryPageListView"
         template="browser/templates/gallerypagefulllistview.pt"
@@ -121,6 +121,22 @@
 
     <browser:menuItem
         for="Products.ATContentTypes.interface.IATTopic"
+        menu="plone_displayviews"
+        title="Gallerypage Full List"
+        action="@@gallerypagefulllistview"
+        description="List Gallery Pages with full content"
+        />
+
+    <browser:menuItem
+        for="plone.app.contenttypes.interfaces.ICollection"
+        menu="plone_displayviews"
+        title="Gallerypage List"
+        action="@@gallerypagelistview"
+        description="List Gallery Pages"
+        />
+
+    <browser:menuItem
+        for="plone.app.contenttypes.interfaces.ICollection"
         menu="plone_displayviews"
         title="Gallerypage Full List"
         action="@@gallerypagefulllistview"

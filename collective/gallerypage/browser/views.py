@@ -1,6 +1,7 @@
 from zope import schema
 from zope.interface import implements, Interface
 from Products.ATContentTypes.interface import IATTopic
+from plone.app.contenttypes.interfaces import ICollection
 from Products.Five import BrowserView
 
 from collective.gallerypage.interfaces import IAddOnInstalled
@@ -37,13 +38,13 @@ class GalleryPageListView(BrowserView):
 
         # We use different query method, depending on
         # whether we do listing for topic or folder
-        if IATTopic.providedBy(self.context):
+        if IATTopic.providedBy(self.context) or ICollection.providedBy(self.context):
             # ATTopic like content
             # Call Products.ATContentTypes.content.topic.ATTopic.queryCatalog()
             # method
             # This method handles b_start internally and
             # grabs it from HTTPRequest object
-            return self.context.queryCatalog(contentFilter, batch=True)
+            return self.context.queryCatalog(contentFilter)
         else:
             # Folder or Large Folder like content
             # Call CMFPlone(/skins/plone_scripts/getFolderContents Python
