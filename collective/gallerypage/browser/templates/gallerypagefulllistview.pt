@@ -21,7 +21,7 @@
                                    img python: scales.scale('image', scale='large')"
                         tal:attributes="href img/url;
                         title image/Title|nothing">
-                        <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
+                        <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/preview" />
                     </a>
                 </div>
                 </tal:images>

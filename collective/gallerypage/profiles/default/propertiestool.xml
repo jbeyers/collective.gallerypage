@@ -10,13 +10,6 @@
    <element value="tile 64:64"/>
    <element value="icon 32:32"/>
    <element value="listing 16:16"/>
-
-   <!-- Include our custom sizes here -->
-   <element value="gallerypage_tile 64:64"/>
-   <element value="gallerypage_thumb 128:128"/>
-   <element value="gallerypage_mini 200:200"/>
-   <element value="gallerypage_preview 400:400"/>
-
   </property>
  </object>
 </object>

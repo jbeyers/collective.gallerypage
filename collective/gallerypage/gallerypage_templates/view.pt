@@ -18,7 +18,7 @@
                 tal:attributes="href img/url;
                 rel string:lightbox-${context/id};
                 title image/Title|nothing">
-                <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/gallerypage_preview" />
+                <img tal:condition="repeat/image/start" tal:replace="structure image/@@images/image/preview" />
                 <tal:gallery tal:condition="repeat/image/start">
                 <span tal:condition="python:len(images)>1">View Gallery</span>
                 </tal:gallery>
